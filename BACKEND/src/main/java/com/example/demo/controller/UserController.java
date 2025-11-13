@@ -52,6 +52,11 @@ public class UserController {
     @DeleteMapping("/{id}")
     ApiResponse<String> deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
-        return ApiResponse.<String>builder().data("ss").build();
+        return ApiResponse.<String>builder().data("User has been deleted").build();
+    }
+    @PutMapping("toggle/{id}")
+    ApiResponse<String> toggleUser(@PathVariable Long id){
+        userService.toggleActiveUser(id);
+        return ApiResponse.<String>builder().data("Toggle user's status successfully").build();
     }
 }
