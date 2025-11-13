@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -15,7 +15,7 @@ import lombok.Setter;
 
 /**
  *
- * @author Hoang
+ * @author PC
  */
 @Entity
 @Table(name = "export_transactions")

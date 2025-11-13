@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import com.example.demo.enumeration.Status;
 import jakarta.persistence.CascadeType;
@@ -26,7 +26,7 @@ import lombok.Setter;
 
 /**
  *
- * @author Hoang
+ * @author PC
  */
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,7 +34,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Transaction extends BaseEntity {
+public class Transaction extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

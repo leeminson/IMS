@@ -8,6 +8,6 @@ package com.example.demo.enumeration;
  *
  * @author PC
  */
-public enum Status {
-    DRAFT,APPROVED,COMPLETED;
+public enum Role {
+    USER,ADMIN
 }
