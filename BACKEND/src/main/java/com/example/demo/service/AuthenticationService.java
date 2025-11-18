@@ -5,11 +5,12 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.request.AuthenticationRequest;
+import com.example.demo.dto.response.AuthenticationResponse;
 
 /**
  *
  * @author PC
  */
 public interface AuthenticationService {
-    boolean authenticate(AuthenticationRequest request);
+    AuthenticationResponse authenticate(AuthenticationRequest request);
 }

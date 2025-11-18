@@ -20,6 +20,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class UserCreationRequest {
+    @NotBlank(message = "Username must not be blank")
     private String username;    
     private String password;
     @NotBlank(message = "Name must not be blank")

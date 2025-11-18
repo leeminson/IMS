@@ -16,8 +16,10 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,7 @@ import org.springframework.stereotype.Service;
  * @author PC
  */
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
@@ -77,6 +80,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse getUser(Long id) {
+        var authentication=SecurityContextHolder.getContext().getAuthentication();
+        log.info("User {}",authentication.getName());
+        authentication.getAuthorities().forEach(i->log.info(i.getAuthority()));
         User user = userRepository.findById(id).orElseThrow(()->new AppException(ErrorCode.RESOURCE_NOT_FOUND, "User not found"));
         return userMapper.toResponse(user);
 
@@ -92,12 +98,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse getUserByUsername(String username) {
-        User user;
-        try {
-             user=userRepository.findByUsername(username);
-        } catch (AppException e) {
-            throw new AppException(ErrorCode.RESOURCE_NOT_FOUND, "User with "+ username +" not found");
-        }
+        User user=userRepository.findByUsername(username).orElseThrow(() -> new AppException(ErrorCode.RESOURCE_NOT_FOUND, "User with "+ username +" not found"));
         return userMapper.toResponse(user);
     }
 

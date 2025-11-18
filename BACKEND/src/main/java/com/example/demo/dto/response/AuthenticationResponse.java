@@ -5,6 +5,7 @@
 package com.example.demo.dto.response;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +16,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class AuthResponse {
+@Builder
+public class AuthenticationResponse {
     private String token;
     boolean authenticated;
 }
